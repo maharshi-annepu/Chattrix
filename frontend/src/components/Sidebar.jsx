@@ -54,16 +54,18 @@ const Sidebar = () => {
             `}
           >
             <div className="relative mx-auto lg:mx-0">
-              <img
-               src={
-           user.profilePic
-    ? `https://res.cloudinary.com/dnf5lkgwn/image/upload/${user.profilePic}.jpg`
+             <img
+  src={
+    user.profilePic?.startsWith("http")
+      ? user.profilePic
+      : user.profilePic
+      ? `https://res.cloudinary.com/dnf5lkgwn/image/upload/${user.profilePic}`
       : "/avatar.png"
-}
+  }
+  alt={user.name}
+  className="w-12 h-12 object-cover rounded-full"
+/>
 
-                alt={user.name}
-                className="size-12 object-cover rounded-full"
-              />
               {onlineUsers.includes(user._id) && (
                 <span
                   className="absolute bottom-0 right-0 size-3 bg-green-500 
